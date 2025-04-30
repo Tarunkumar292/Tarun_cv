@@ -418,3 +418,19 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.experience-item').forEach(el => {
   observer.observe(el);
 });
+
+// contact
+const observer1 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer1.observe(el);
+});
+
