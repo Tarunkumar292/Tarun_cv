@@ -1,0 +1,427 @@
+  body::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* hero-section */
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+
+      50% {
+          background-position: 100% 50%;
+      }
+
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+  .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+  }
+
+  @keyframes blink {
+
+      0%,
+      100% {
+          opacity: 1;
+      }
+
+      50% {
+          opacity: 0;
+      }
+  }
+
+  .animate-blink {
+      animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes scroll-down {
+      0% {
+          transform: translateY(0);
+          opacity: 1;
+      }
+
+      75% {
+          transform: translateY(12px);
+          opacity: 0;
+      }
+
+      80% {
+          transform: translateY(0);
+          opacity: 0;
+      }
+
+      100% {
+          opacity: 1;
+      }
+  }
+
+  .animate-scroll-down {
+      animation: scroll-down 2s ease-in-out infinite;
+  }
+
+  .typewriter {
+      overflow: hidden;
+      display: inline-block;
+      white-space: nowrap;
+      border-right: 2px solid transparent;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+      from {
+          width: 0
+      }
+
+      to {
+          width: 100%
+      }
+  }
+
+  @keyframes blink-caret {
+
+      from,
+      to {
+          border-color: transparent
+      }
+
+      50% {
+          border-color: #4fd1c5;
+      }
+  }
+
+  /* skills */
+  .skill-item {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(20, 184, 166, 0.2);
+  }
+
+  .skill-progress {
+      height: 4px;
+      width: 0;
+      background: linear-gradient(to right, #2dd4bf, #5eead4);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width 1s ease-out;
+  }
+
+  .filter-btn {
+      transition: all 0.3s ease;
+  }
+
+  .filter-btn.active {
+      background-color: #14b8a6;
+      color: white;
+      font-weight: bold;
+  }
+
+  .hidden-skill {
+      opacity: 0;
+      transform: scale(0.8);
+      position: absolute;
+  }
+
+  .animate-in {
+      animation: fadeIn 0.5s forwards;
+  }
+
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  /* experience section */
+  /* Custom animations and styles */
+  @keyframes gradientBg {
+      0% {
+          background-position: 0% 50%;
+      }
+
+      50% {
+          background-position: 100% 50%;
+      }
+
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+  @keyframes slideIn {
+      from {
+          transform: translateX(-50px);
+          opacity: 0;
+      }
+
+      to {
+          transform: translateX(0);
+          opacity: 1;
+      }
+  }
+
+  @keyframes scaleIn {
+      from {
+          transform: scale(0.9);
+          opacity: 0;
+      }
+
+      to {
+          transform: scale(1);
+          opacity: 1;
+      }
+  }
+
+  @keyframes fadeInUp {
+      from {
+          transform: translateY(20px);
+          opacity: 0;
+      }
+
+      to {
+          transform: translateY(0);
+          opacity: 1;
+      }
+  }
+
+  .job-card {
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      border-left: 4px solid #2dd4bf;
+      transition: all 0.4s ease;
+      animation: scaleIn 0.6s ease forwards;
+      transform-origin: center;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+  }
+
+  .job-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #2dd4bf, #0d9488, #2dd4bf);
+      background-size: 200% 200%;
+      animation: gradientBg 3s ease infinite;
+  }
+
+  .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #1f2937 0%, #0f172a 100%);
+  }
+
+  .experience-item {
+      position: relative;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+      overflow: hidden;
+  }
+
+  .experience-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #2dd4bf, transparent);
+      transition: width 0.5s ease;
+  }
+
+  .experience-item:hover::after {
+      width: 100%;
+  }
+
+  .experience-item:hover {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 0%, rgba(31, 41, 55, 0.8) 100%);
+      transform: translateX(5px);
+  }
+
+  .skill-tag {
+      display: inline-block;
+      background: linear-gradient(90deg, #0d9488, #2dd4bf);
+      background-size: 200% 200%;
+      animation: gradientBg 3s ease infinite;
+      padding: 4px 10px;
+      margin-right: 8px;
+      margin-bottom: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      color: #f3f4f6;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+  }
+
+  .skill-tag:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .company-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 12px;
+      background: linear-gradient(90deg, #374151, #1f2937);
+      border-radius: 9999px;
+      color: #f3f4f6;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      transition: all 0.3s ease;
+  }
+
+  @media (max-width: 640px) {
+      .company-badge {
+          top: 2px;
+          right: -9px;
+          border-radius: 0 0 0 10px;
+      }
+  }
+
+  .job-duration {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(17, 24, 39, 0.7);
+      padding: 2px 10px;
+      border-radius: 9999px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(45, 212, 191, 0.2);
+  }
+
+  /* Apply staggered animations to list items */
+  .stagger-anim>li:nth-child(1) {
+      animation-delay: 0.1s;
+  }
+
+  .stagger-anim>li:nth-child(2) {
+      animation-delay: 0.2s;
+  }
+
+  .stagger-anim>li:nth-child(3) {
+      animation-delay: 0.3s;
+  }
+
+  .stagger-anim>li:nth-child(4) {
+      animation-delay: 0.4s;
+  }
+
+  .stagger-anim>li:nth-child(5) {
+      animation-delay: 0.5s;
+  }
+
+  .stagger-anim>li:nth-child(6) {
+      animation-delay: 0.6s;
+  }
+
+  .stagger-anim>li:nth-child(7) {
+      animation-delay: 0.7s;
+  }
+
+  .stagger-anim>li:nth-child(8) {
+      animation-delay: 0.8s;
+  }
+
+  .stagger-anim>li:nth-child(9) {
+      animation-delay: 0.9s;
+  }
+
+  .anim-fadeInUp {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+  }
+
+  /* footer */
+  .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+  }
+
+  .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  /* experience page  */
+  .experience-item {
+    opacity: 1;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.8s ease-in-out;
+  }
+
+  .experience-item.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -1.1rem;
+    top: -0.75rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #14b8a6;
+    border-radius: 9999px;
+    border: 1px solid white;
+    box-shadow: 0 0 15px #14b8a6, 0 0 30px #14b8a6;
+    animation: pulseDot 2s infinite;
+  }
+
+  @keyframes pulseDot {
+    0% {
+      transform: scale(2.5);
+      box-shadow: 0 0 10px #14b8a6;
+    }
+
+    50% {
+      transform: scale(3);
+      box-shadow: 0 0 25px #14b8a6;
+    }
+
+    100% {
+      transform: scale(2.5);
+      box-shadow: 0 0 10px #14b8a6;
+    }
+  }
+
+  @keyframes glowFade {
+    0% {
+      opacity: 0.1;
+      background-position: top;
+    }
+    50% {
+      opacity: 1;
+      background-position: center;
+    }
+    100% {
+      opacity: 0.2;
+      background-position: bottom;
+    }
+  }
+  
+  .animate-glow-fade {
+    animation: glowFade 4s ease-in-out infinite;
+    background-size: 100% 300%;
+  }
+  
