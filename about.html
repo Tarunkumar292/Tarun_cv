@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Education - CV</title>
+    <link rel="icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientAnimation 3s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .education-card {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+
+
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .rotate-bg {
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .badge {
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .timeline-hexagon {
+            width: 15px;
+            height: 15px;
+            background: #5c6bc0;
+            position: relative;
+            transform: rotate(45deg);
+            margin: 0 auto;
+        }
+
+        .timeline-hexagon:before,
+        .timeline-hexagon:after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: inherit;
+            border-radius: 2px;
+        }
+
+        .timeline-hexagon:before {
+            transform: rotate(60deg);
+        }
+
+        .timeline-hexagon:after {
+            transform: rotate(-60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header class="bg-gray-800 shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6 py-4">
+            <h1
+                class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-teal-500 animate-gradient">
+                Tarun Kumar
+            </h1>
+            <!-- Hamburger Icon (mobile) -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none text-2xl">
+                ☰
+            </button>
+
+            <!-- Nav Menu -->
+            <nav id="nav-menu"
+                class="hidden md:flex absolute md:static top-16 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent flex-col md:flex-row gap-6 text-sm font-medium px-6 md:px-0 py-4 md:py-0 z-40">
+                <ul class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                    <li><a href="index.html" class="text-[#FFFFFF] hover:text-teal-400 block">Home</a></li>
+                    <li><a href="about.html" class="text-[#FFFFFF] hover:text-teal-400 block">About</a></li>
+                    <li><a href="skills.html" class="text-[#FFFFFF] hover:text-teal-400 block">Skills</a></li>
+                    <li><a href="experience.html" class="text-[#FFFFFF] hover:text-teal-400 block">Experience</a></li>
+                    <li><a href="projects.html" class="text-[#FFFFFF] hover:text-teal-400 block">Projects</a></li>
+                    <li><a href="contact.html" class="text-[#FFFFFF] hover:text-teal-400 block">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header -->
+    <header class="pt-28 pb-16 bg-gradient-to-r from-gray-800 to-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-400 to-teal-400 sm:text-5xl lg:text-6xl opacity-0 animate-gradient"
+                    id="main-title">My Education</h1>
+                <p class="mt-3 max-w-md mx-auto text-lg text-gray-300 sm:text-xl md:mt-5 md:max-w-3xl opacity-0"
+                    id="subtitle">
+                    The academic journey that shaped my professional expertise
+                </p>
+            </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white opacity-5 rounded-full rotate-bg">
+        </div>
+        <div class="absolute top-0 right-0 w-40 h-40 bg-teal-400 opacity-10 rounded-bl-full"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-pink-500 opacity-10 rounded-tr-full"></div>
+    </header>
+
+    <!-- Timeline -->
+    <section class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="timeline-line"></div>
+            <!-- Education Card 1 -->
+            <div class="mb-24 relative education-card">
+                <div class="timeline-marker timeline-hexagon"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:text-right">
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 badge">
+                            2018 - 2022
+                        </span>
+                        <h3 class="mt-3 text-2xl font-bold text-gray-900">Bachelor of technology</h3>
+                        <p class="mt-1 text-lg font-medium text-indigo-600">Rps Group of Institutions</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover-glow transition-all duration-300">
+                        <p class="text-gray-600">Specialized in Computer Science with a
+                            focus on development and deep learning in Data structures & algorithm.</p>
+                        <div class="mt-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-indigo-700">GPA</span>
+                                <span class="text-sm font-medium text-indigo-700">6.4/10.0</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="64"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Html</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Javascript</span>
+                            <span class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Data
+                                Structures</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Algorithms</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Research</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Card 2 -->
+            <div class="mb-24 relative education-card">
+                <div class="timeline-marker timeline-hexagon"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:text-right">
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 badge">
+                            2016 - 2017
+                        </span>
+                        <h3 class="mt-3 text-2xl font-bold text-gray-900">Senior Secondary (12th)</h3>
+                        <p class="mt-1 text-lg font-medium text-indigo-600">G.R International School, CBSE</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover-glow transition-all duration-300">
+                        <p class="text-gray-600">Completed 12th with a science stream, focusing on Physics, Chemistry,
+                            and Mathematics. Secured excellent results.</p>
+                        <div class="mt-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-indigo-700">Percentage</span>
+                                <span class="text-sm font-medium text-indigo-700">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Physics</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Chemistry</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Mathematics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Card 3 -->
+            <div class="mb-24 relative education-card">
+                <div class="timeline-marker timeline-hexagon"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:text-right">
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 badge">
+                            2014 - 2015
+                        </span>
+                        <h3 class="mt-3 text-2xl font-bold text-gray-900">Secondary School Examination (10th)</h3>
+                        <p class="mt-1 text-lg font-medium text-indigo-600">G.R International School, CBSE</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover-glow transition-all duration-300">
+                        <p class="text-gray-600">Achieved strong academic performance in foundational subjects such as
+                            Math, Science, and English.</p>
+                        <div class="mt-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-indigo-700">CGPA</span>
+                                <span class="text-sm font-medium text-indigo-700">9.4/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="94"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Mathematics</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">Science</span>
+                            <span
+                                class="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-800 badge">English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 opacity-0" id="skills-title">Academic Skills &
+                Achievements</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Skill Card 1 -->
+                <div
+                    class="bg-white p-6 rounded-lg shadow-lg hover-glow transition-all duration-300 opacity-0 education-card">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6L3 9m9 5l9-5" />
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900">Certifications & MOOCs</h3>
+                    </div>
+                    <p class="text-gray-600">Completed advanced courses on Full Stack Development, JavaScript, React
+                        Native, and MongoDB from Internshala and Internship Studio with top ratings.</p>
+                    <div class="mt-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-indigo-700">Course Mastery</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="92"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card 2 -->
+                <div
+                    class="bg-white p-6 rounded-lg shadow-lg hover-glow transition-all duration-300 opacity-0 education-card">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 14s1.5-2 4-2 4 2 4 2M12 6v6m6 8H6a2 2 0 01-2-2V7a2 2 0 012-2h3l1-2h4l1 2h3a2 2 0 012 2v11a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900">Web Development Mentorship</h3>
+                    </div>
+                    <p class="text-gray-600">Trained over 30 students in HTML, CSS, JavaScript, and DOM with structured
+                        curriculum and daily tasks, improving their project-building skills.</p>
+                    <div class="mt-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-indigo-700">Mentorship Impact</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="88"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card 3 -->
+                <div
+                    class="bg-white p-6 rounded-lg shadow-lg hover-glow transition-all duration-300 opacity-0 education-card">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.75 3a.75.75 0 01.75.75v.96c1.408.14 2.7.648 3.75 1.42l.68-.68a.75.75 0 111.06 1.06l-.68.68c.773 1.05 1.281 2.342 1.42 3.75h.96a.75.75 0 010 1.5h-.96a8.012 8.012 0 01-1.42 3.75l.68.68a.75.75 0 11-1.06 1.06l-.68-.68a8.012 8.012 0 01-3.75 1.42v.96a.75.75 0 01-1.5 0v-.96a8.012 8.012 0 01-3.75-1.42l-.68.68a.75.75 0 11-1.06-1.06l.68-.68a8.012 8.012 0 01-1.42-3.75h-.96a.75.75 0 010-1.5h.96a8.012 8.012 0 011.42-3.75l-.68-.68a.75.75 0 111.06-1.06l.68.68a8.012 8.012 0 013.75-1.42v-.96A.75.75 0 019.75 3z" />
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900">Hackathon Participation</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Participated in multiple national-level hackathons and coding competitions. Secured top 5
+                        positions in Web & App Development challenges, and recognized for innovative UI/UX and real-time
+                        functionality.
+                    </p>
+                    <div class="mt-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-indigo-700">Performance</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="90"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-gray-800 to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-400 to-teal-400 mb-4 opacity-0 animate-gradient"
+                id="cta-title">Want to know more about my qualifications?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto opacity-0" id="cta-text">Check out my experience
+                section to see how I've applied my academic knowledge in real-world scenarios.</p>
+            <div class="flex flex-wrap justify-center gap-4 opacity-0" id="cta-buttons">
+                <a href="experience.html"
+                    class="px-6 py-3 bg-gray-700 text-teal-400 font-medium rounded-lg shadow hover:bg-gray-600 transition-colors duration-300 border border-teal-400 hover:text-teal-300">
+                    View Experience
+                </a>
+                <a href="contact.html"
+                    class="px-6 py-3 bg-transparent border-2 border-teal-400 text-teal-400 font-medium rounded-lg hover:bg-teal-400 hover:text-gray-900 transition-colors duration-300">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="container px-4 grid grid-cols-1 md:grid-cols-3 gap-2">
+            <!-- Description -->
+            <div
+                class="reveal hover:bg-gray-800 rounded-xl p-4 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+                <p class="mb-4 text-white-400 font-semibold text-lg transition duration-300 hover:text-teal-200">
+                    Frontend Developer</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/in/tarun-kumar-7b9045259/" target="_blank"
+                        class="text-gray-300 hover:text-teal-400 text-xl transition-transform transform hover:scale-125 duration-300">
+                        <i class="fab fa-linkedin animate-pulse"></i>
+                    </a>
+                    <a href="https://github.com/Tarunkumar292" target="_blank"
+                        class="text-gray-300 hover:text-teal-400 text-xl transition-transform transform hover:scale-125 duration-300">
+                        <i class="fab fa-github animate-pulse"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div
+                class="reveal hover:bg-gray-800 rounded-xl p-4 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+                <h4 class="text-lg font-semibold text-white mb-4 transition duration-300 hover:text-teal-300">Quick
+                    Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#about" class="text-white-400 hover:text-teal-300 transition duration-300">About</a>
+                    </li>
+                    <li><a href="#cv" class="text-white-400 hover:text-teal-300 transition duration-300">CV</a></li>
+                    <li><a href="#portfolio"
+                            class="text-white-400 hover:text-teal-300 transition duration-300">Portfolio</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div
+                class="reveal hover:bg-gray-800 rounded-xl p-4 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+                <h4 class="text-lg font-semibold text-white mb-4 transition duration-300 hover:text-teal-300">Contact
+                    Info</h4>
+                <p class="flex items-center mb-2 transition-all duration-300 hover:text-teal-300">
+                    <i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>
+                    Sector14, Gurugram
+                </p>
+                <p class="flex items-center mb-2 transition-all duration-300 hover:text-teal-300">
+                    <i class="fas fa-phone-alt mr-2 text-blue-400"></i>
+                    <a href="tel:+8059150536" class="hover:text-teal-400">8059150536</a>
+                </p>
+                <p class="flex items-center transition-all duration-300 hover:text-teal-300">
+                    <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                    <a href="mailto:tarunkumar2920@gmail.com" class="hover:text-teal-400">
+                        tarunkumar2920@gmail.com
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer bottom -->
+        <div class="text-center text-gray-500 text-sm mt-10 reveal hover:text-teal-300 transition duration-500">
+            &copy; 2025 Tarun Kumar. All rights reserved.
+        </div>
+    </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

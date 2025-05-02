@@ -351,18 +351,6 @@
       animation: fadeInUp 0.6s ease forwards;
   }
 
-  /* footer */
-  .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-in-out;
-  }
-
-  .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-  }
-
   /* experience page  */
   .experience-item {
       opacity: 1;

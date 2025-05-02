@@ -382,6 +382,263 @@ document.addEventListener('DOMContentLoaded', function () {
   document.head.appendChild(style);
 });
 
+// experience page
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.experience-item').forEach(el => {
+  observer.observe(el);
+});
+// skills page
+document.addEventListener('DOMContentLoaded', function () {
+  const revealSkillItems = function () {
+    const items = document.querySelectorAll('.tech-mastery-item');
+    const windowHeight = window.innerHeight;
+
+    items.forEach((item, index) => {
+      const itemTop = item.getBoundingClientRect().top;
+
+      if (itemTop < windowHeight - 100) {
+        setTimeout(() => {
+          item.classList.add('reveal');
+
+          setTimeout(() => {
+            const bar = item.querySelector('.tech-mastery-bar');
+            const percent = bar.getAttribute('data-percent');
+            bar.style.width = percent + '%';
+          }, 300);
+        }, index * 150);
+      }
+    });
+  };
+
+  revealSkillItems();
+
+  window.addEventListener('scroll', revealSkillItems);
+
+  window.addEventListener('resize', revealSkillItems);
+});
+
+// contact page
+const observer1 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer1.observe(el);
+});
+
+// about page
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('bg-white/95', 'backdrop-blur-sm');
+    navbar.classList.remove('bg-white');
+  } else {
+    navbar.classList.remove('bg-white/95', 'backdrop-blur-sm');
+    navbar.classList.add('bg-white');
+  }
+});
+
+// GSAP Animations
+document.addEventListener('DOMContentLoaded', () => {
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Header animation
+  gsap.to('#main-title', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: 'power3.out'
+  });
+
+  gsap.to('#subtitle', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 0.3,
+    ease: 'power3.out'
+  });
+
+  // Skills title animation
+  gsap.to('#skills-title', {
+    scrollTrigger: {
+      trigger: '#skills-title',
+      start: 'top 80%',
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  });
+
+  // CTA section animations
+  gsap.to('#cta-title', {
+    scrollTrigger: {
+      trigger: '#cta-title',
+      start: 'top 80%',
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  });
+
+  gsap.to('#cta-text', {
+    scrollTrigger: {
+      trigger: '#cta-text',
+      start: 'top 80%',
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    delay: 0.2,
+    ease: 'power3.out'
+  });
+
+  gsap.to('#cta-buttons', {
+    scrollTrigger: {
+      trigger: '#cta-buttons',
+      start: 'top 80%',
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    delay: 0.4,
+    ease: 'power3.out'
+  });
+
+  // Timeline animations
+  const timelineLine = document.querySelector('.timeline-line');
+  gsap.to(timelineLine, {
+    scrollTrigger: {
+      trigger: timelineLine,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      scrub: true
+    },
+    height: '100%',
+    duration: 2,
+    ease: 'power1.inOut'
+  });
+
+  // Education cards animations
+  const educationCards = document.querySelectorAll('.education-card');
+  educationCards.forEach((card, index) => {
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 80%',
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: index * 0.2,
+      ease: 'power3.out',
+      onComplete: () => {
+        // Animate timeline dots
+        const dot = card.querySelector('.timeline-hexagon');
+        if (dot) {
+          gsap.to(dot, {
+            scale: 1,
+            duration: 0.5,
+            ease: 'back.out(1.7)'
+          });
+        }
+
+        // Animate badges
+        const badges = card.querySelectorAll('.badge');
+        badges.forEach((badge, i) => {
+          gsap.to(badge, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3,
+            delay: i * 0.1,
+            ease: 'back.out(1.7)'
+          });
+        });
+
+        // Animate progress bars
+        const progressBar = card.querySelector('.progress-bar');
+        if (progressBar) {
+          const width = progressBar.getAttribute('data-width');
+          gsap.to(progressBar, {
+            width: width + '%',
+            duration: 1.5,
+            ease: 'power2.out'
+          });
+        }
+      }
+    });
+  });
+});
+
+// Add scroll reveal animation to each section
+const sections = document.querySelectorAll('section');
+sections.forEach(section => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top 80%',
+    onEnter: () => section.classList.add('animate__animated', 'animate__fadeIn')
+  });
+});
+
+// Animated counter for skills
+function animateCounter(el, target, duration) {
+  let startTime = null;
+  const start = parseInt(el.textContent, 10) || 0;
+
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const value = Math.floor(progress * (target - start) + start);
+
+    el.textContent = value;
+
+    if (progress < 1) {
+      window.requestAnimationFrame(animation);
+    }
+  }
+
+  window.requestAnimationFrame(animation);
+}
+
+// Hover effects for education cards
+const cards = document.querySelectorAll('.hover-glow');
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    gsap.to(card, {
+      y: -10,
+      boxShadow: '0 10px 25px rgba(59, 130, 246, 0.4)',
+      duration: 0.3
+    });
+  });
+
+  card.addEventListener('mouseleave', () => {
+    gsap.to(card, {
+      y: 0,
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      duration: 0.3
+    });
+  });
+});
+
 // footer
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", function (e) {
@@ -403,34 +660,3 @@ const handleScroll = () => {
 
 window.addEventListener("scroll", handleScroll);
 window.addEventListener("load", handleScroll);
-
-// experience page
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-document.querySelectorAll('.experience-item').forEach(el => {
-  observer.observe(el);
-});
-
-// contact
-const observer1 = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-document.querySelectorAll('.fade-in').forEach(el => {
-  observer1.observe(el);
-});
-
